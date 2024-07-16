@@ -11,5 +11,21 @@ const show = async()=>{
     }
 }
 
+const addNew = async (postData)=>{
+    //Method: Change the method property to 'POST' to specify that the request should use the POST HTTP method.
+    //Headers: Set the Content-Type header to 'application/json' to indicate that the request body contains JSON data
+    //Body: Use JSON.stringify(postData) to convert the postData object to a JSON string, which is required for the POST request body.
+    const res = await fetch(BASE_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    });
+    const data = await res.json();
+    return data;
+}
 
-export {show};
+
+
+export {show, addNew};

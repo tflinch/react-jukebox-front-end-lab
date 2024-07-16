@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const TrackForm = () => {
+const TrackForm = (props) => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         artist: '',
         title: '',
@@ -9,6 +11,8 @@ const TrackForm = () => {
     const handleSumbit = (e) => {
         e.preventDefault()
         console.log("Handle Submit")
+        props.fetchData(formData)
+        navigate('/')
     }
 
     const handleChange = (event) => {

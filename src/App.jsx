@@ -28,7 +28,7 @@ const App = () => {
   return <>
     <Routes>
       <Route path="/" element={<Home trackList={trackList} />} />
-      <Route path="/add-track" element={<TrackForm />} />
+      <Route path="/add-track" element={<TrackForm fetchData={trackService.addNew} />} />
     </Routes>
   </>;
 };
