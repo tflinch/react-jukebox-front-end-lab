@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+
 
 const TrackForm = (props) => {
     const navigate = useNavigate();
@@ -16,9 +17,7 @@ const TrackForm = (props) => {
     }
 
     const handleChange = (event) => {
-
         setFormData({ ...formData, [event.target.name]: event.target.value });
-
     }
 
     return (
@@ -30,6 +29,7 @@ const TrackForm = (props) => {
                 <input type="text" id="title" name="title" value={formData.title} onChange={handleChange} required></input>
                 <button type="submit">Add New Track</button>
             </form>
+            <Link to={'/'}><button>Home</button></Link>
         </>
     )
 }

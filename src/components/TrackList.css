@@ -1,0 +1,18 @@
+.track__container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    background: #282828;
+    padding: 2em;
+}
+
+.hero__container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.hero__grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+}
