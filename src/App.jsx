@@ -6,29 +6,34 @@ import * as trackService from './services/trackServices'
 import TrackForm from './components/TrackForm';
 
 const App = () => {
-  const [trackList, setTrackList] = useState([])
+  const [trackList, setTrackList] = useState([]);
 
   useEffect(() => {
-
     const fetchData = async () => {
-      const data = await trackService.show();
-      console.log('Frontend Data', data)
-      const tracks = data.map(track => {
-        return {
+      try {
+        const data = await trackService.show();
+        const tracks = data.map(track => ({
           artist: track.artist,
-          title: track.title
-        }
-      })
-      setTrackList(tracks)
-      console.log('tracklist log- \n', trackList)
-    }
-    fetchData()
-  }, [])
+          title: track.title,
+          id: track._id
+        }));
+        setTrackList(tracks);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [trackList]);
 
   return <>
     <Routes>
       <Route path="/" element={<Home trackList={trackList} />} />
       <Route path="/add-track" element={<TrackForm fetchData={trackService.addNew} />} />
+      <Route
+        path="/edit-track/:trackId"
+        element={<TrackForm fetchData={trackService.updateTrack} />}
+      />
     </Routes>
   </>;
 };

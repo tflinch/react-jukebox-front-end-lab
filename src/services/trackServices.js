@@ -26,6 +26,19 @@ const addNew = async (postData)=>{
     return data;
 }
 
+const updateTrack = async (putData) => {
+    console.log('Put data', putData);
+    const res = await fetch(`${BASE_URL}/${putData.id}?_method=PUT`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(putData)
+    });
+
+    const data = await res.json();
+    return data;
+};
 
 
-export {show, addNew};
+export {show, addNew, updateTrack};

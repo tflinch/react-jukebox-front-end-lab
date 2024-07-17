@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './TrackList.css'
 const TrackList = ({ trackList }) => {
 
@@ -10,7 +11,9 @@ const TrackList = ({ trackList }) => {
                 </div>
                 <div className="hero__grid">
                     <button>Play</button>
-                    <button>Edit</button>
+                    <Link to={`/edit-track/${track.id}`}>
+                        <button>Edit</button>
+                    </Link>
                     <button>Delete</button>
                 </div>
             </div>
