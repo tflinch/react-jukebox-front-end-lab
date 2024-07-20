@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import './TrackList.css'
+import { deleteTrack } from '../services/trackServices';
 const TrackList = ({ trackList }) => {
 
     const show = trackList.map(track => {
@@ -14,7 +15,7 @@ const TrackList = ({ trackList }) => {
                     <Link to={`/edit-track/${track.id}`}>
                         <button>Edit</button>
                     </Link>
-                    <button>Delete</button>
+                    <button onClick={() => { deleteTrack(track.id) }}>Delete</button>
                 </div>
             </div>
         )

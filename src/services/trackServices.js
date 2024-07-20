@@ -40,5 +40,13 @@ const updateTrack = async (putData) => {
     return data;
 };
 
+const deleteTrack = async(deleteData)=>{
+    console.log('Delete Data', deleteData);
+    const res = await fetch(`${BASE_URL}/${deleteData.id}?_method=DELETE`
+    )
+    const data = await res.json();
+    return data
+}
 
-export {show, addNew, updateTrack};
+
+export {show, addNew, updateTrack, deleteTrack};
